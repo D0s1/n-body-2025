@@ -1,7 +1,5 @@
 package org.simulation;
 
-import org.simulation.PointOfMass;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;

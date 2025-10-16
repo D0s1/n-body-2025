@@ -9,7 +9,7 @@ public class PointOfMass {
     private final Movement movement = new Movement() ;
     private double weight;
     // We use g = 1 for simulation purposes, in reality it would be 9.81
-    private double g = 1;
+    private final double g = 1;
     private final double sizeOfSystem = 1000;
     private final List<PointOfMass> canBeMergedWith = new ArrayList<>();
     public boolean willBeMerged = false;
