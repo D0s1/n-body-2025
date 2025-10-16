@@ -25,7 +25,7 @@ public class PointOfMass {
         return weight;
     }
 
-    public double getSize(){
+    public double getRadius(){
          // We calculate with density of 1/300 for simulation
         double size = Math.cbrt((3 * weight * 300) / (4 * Math.PI));
         return Math.cbrt((3 * weight * 300) / (4 * Math.PI));
@@ -65,7 +65,7 @@ public class PointOfMass {
 
     public void canBeMerged(PointOfMass pointToMerge){
         double distance = getDistance(pointToMerge.getCoordinate());
-        boolean canBeMerged = (this.getSize() + pointToMerge.getSize())> distance;
+        boolean canBeMerged = (this.getRadius() + pointToMerge.getRadius())> distance;
         if (canBeMerged){
             canBeMergedWith.add(pointToMerge);
         }
