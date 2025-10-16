@@ -5,12 +5,13 @@ import java.util.List;
 
 public class PointOfMass {
 
-    private Coordinate coordinate;
-    private Movement movement = new Movement() ;
+    private final Coordinate coordinate;
+    private final Movement movement = new Movement() ;
     private double weight;
+    // We use g = 1 for simulation purposes, in reality it would be 9.81
     private double g = 1;
-    private final double sizeOfSystem = 999;
-    private List<PointOfMass> canBeMergedWith = new ArrayList<>();
+    private final double sizeOfSystem = 1000;
+    private final List<PointOfMass> canBeMergedWith = new ArrayList<>();
     public boolean willBeMerged = false;
 
     public PointOfMass(double xCord, double yCord, double xSpeed, double ySpeed,double weight){
@@ -25,7 +26,7 @@ public class PointOfMass {
     }
 
     public double getSize(){
-         // We calculate with density of 0.01
+         // We calculate with density of 1/300 for simulation
         double size = Math.cbrt((3 * weight * 300) / (4 * Math.PI));
         return Math.cbrt((3 * weight * 300) / (4 * Math.PI));
     }
@@ -43,7 +44,6 @@ public class PointOfMass {
         double acceleration  = distance == 0 ? 0 : g * pointToCalculateWith.getWeight() / Math.pow(distance,2);
         double xDistance = pointToCalculateWith.getCoordinate().getX() - coordinate.getX();
         double yDistance = pointToCalculateWith.getCoordinate().getY() - coordinate.getY();
-        // now we normalize directions
         double xDirection = xDistance == 0 ? 0:  xDistance / distance;
         double yDirection = yDistance == 0 ? 0 : yDistance / distance;
         movement.pushInDirection(xDirection*acceleration, yDirection*acceleration);
@@ -53,6 +53,7 @@ public class PointOfMass {
         return Math.sqrt(Math.pow(coordinateOfOtherPoint.getX() -
                 coordinate.getX(),2) + Math.pow(coordinateOfOtherPoint.getY() - coordinate.getY(),2));
     }
+
     public void updatePos(){
         canBeMergedWith.clear();
         double newX = coordinate.getX()+movement.getXMovement();
@@ -72,7 +73,7 @@ public class PointOfMass {
 
     public void merge(){
         if (!willBeMerged){
-            canBeMergedWith.forEach(point -> mergePoints(point));
+            canBeMergedWith.forEach(this::mergePoints);
         }
     }
     public void mergePoints(PointOfMass pointToMerge){
@@ -85,13 +86,10 @@ public class PointOfMass {
         }
     }
 
-
-
     private void calculateMomentumAfterMerge(PointOfMass pointToMerge) {
-        // We keep the kinetik energy!
-        movement.setXMovement((movement.getXMovement() * weight + pointToMerge.getMovement().getXMovement() *pointToMerge.weight) /
+        movement.setXMovement((movement.getXMovement() * weight + pointToMerge.getMovement().getXMovement() * pointToMerge.weight) /
                 (weight +pointToMerge.getWeight()));
-        movement.setYMovement((movement.getYMovement() * weight + pointToMerge.getMovement().getYMovement() *pointToMerge.weight) /
+        movement.setYMovement((movement.getYMovement() * weight + pointToMerge.getMovement().getYMovement() * pointToMerge.weight) /
                 (weight +pointToMerge.getWeight()));
 
     }

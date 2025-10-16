@@ -22,14 +22,13 @@ public class GraphicInterface extends JPanel {
 
     public void setPoints(List<PointOfMass> points) {
         this.pointsOfMass = points;
-        repaint(); // Swing sorgt dafür, dass paintComponent aufgerufen wird
+        repaint();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g); // löscht den Hintergrund
-        g.setColor(Color.BLUE);
-
+        super.paintComponent(g);
+        g.setColor(Color.BLACK);
         if (pointsOfMass != null) {
             pointsOfMass.forEach(point ->
                     g.fillOval((int) point.getCoordinate().getX(),
