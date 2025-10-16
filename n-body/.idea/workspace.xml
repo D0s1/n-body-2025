@@ -72,7 +72,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/simulation/PointOfMass.java</url>
-          <line>29</line>
+          <line>30</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
