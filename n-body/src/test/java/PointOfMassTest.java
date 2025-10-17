@@ -27,7 +27,7 @@ public class PointOfMassTest {
     }
 
     @Test
-    void posUpdated(){
+    void testPosUpdated(){
         PointOfMass firstPoint = new PointOfMass(0,0,0,0,1);
         PointOfMass secondPoint = new PointOfMass(100,0,0,0,10);
         firstPoint.calculateMovementWithOtherPoint(secondPoint);
