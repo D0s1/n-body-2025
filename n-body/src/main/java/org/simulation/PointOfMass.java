@@ -27,7 +27,6 @@ public class PointOfMass {
 
     public double getRadius(){
          // We calculate with density of 1/300 for simulation
-        double size = Math.cbrt((3 * weight * 300) / (4 * Math.PI));
         return Math.cbrt((3 * weight * 300) / (4 * Math.PI));
     }
 
@@ -41,7 +40,8 @@ public class PointOfMass {
 
     public void calculateMovementWithOtherPoint(PointOfMass pointToCalculateWith){
         double distance = getDistance(pointToCalculateWith.getCoordinate());
-        double acceleration  = distance == 0 ? 0 : g * pointToCalculateWith.getWeight() / Math.pow(distance,2);
+        // We halve the physically correct acceleration to compensate for the higher tick rate.
+        double acceleration  = distance == 0 ? 0 : g * pointToCalculateWith.getWeight() / Math.pow(distance,2) / 2;
         double xDistance = pointToCalculateWith.getCoordinate().getX() - coordinate.getX();
         double yDistance = pointToCalculateWith.getCoordinate().getY() - coordinate.getY();
         double xDirection = xDistance == 0 ? 0:  xDistance / distance;
@@ -88,9 +88,9 @@ public class PointOfMass {
 
     private void calculateMomentumAfterMerge(PointOfMass pointToMerge) {
         movement.setXMovement((movement.getXMovement() * weight + pointToMerge.getMovement().getXMovement() * pointToMerge.weight) /
-                (weight +pointToMerge.getWeight()));
+                (weight + pointToMerge.getWeight()));
         movement.setYMovement((movement.getYMovement() * weight + pointToMerge.getMovement().getYMovement() * pointToMerge.weight) /
-                (weight +pointToMerge.getWeight()));
+                (weight + pointToMerge.getWeight()));
 
     }
 

@@ -12,7 +12,7 @@ public class Model {
     public Model(int numOfPoints, int minWeight, int maxWeight) {
         createModel(numOfPoints, minWeight, maxWeight);
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-        executor.scheduleAtFixedRate(this::simulateModel, 0, 4, TimeUnit.MILLISECONDS);
+        executor.scheduleAtFixedRate(this::simulateModel, 0, 2, TimeUnit.MILLISECONDS);
     }
 
     private void createModel(int numOfPoints, int minWeight, int maxWeight) {
