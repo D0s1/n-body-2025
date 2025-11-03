@@ -1,7 +1,7 @@
 # N-Body Simulation
 
-Kleines Projekt zur Simulation eines N-Body-Systems mit "Merge-Eigenschaften", geschrieben in **Java 21** mit IntelliJ IDEA.  
-Zur Ausführung bitte **Maven** verwenden und die `Main.java` starten.  
+Small Project to simulate a N-Body-System with "Merge-Attributes", written in **Jav 21** with IntelliJ Idea.
+Please use with **Maven** and run the  `Main.java`.
 
-Tests sind vorhanden unter:  
+Tests are executable under:  
 `src/test/java/PointOfMassTest.java`
