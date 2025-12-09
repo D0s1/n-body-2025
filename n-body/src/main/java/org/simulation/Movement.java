@@ -14,9 +14,11 @@ public class Movement {
     public double getXMovement(){
         return directedMovement.getX();
     }
+
     public double getYMovement(){
         return directedMovement.getY();
     }
+
     public void reverseXMovement(){
         directedMovement.setX(-directedMovement.getX());
     }
