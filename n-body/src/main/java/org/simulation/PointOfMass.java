@@ -30,6 +30,10 @@ public class PointOfMass {
         return Math.cbrt((3 * weight * 300) / (4 * Math.PI));
     }
 
+    public double getDiameter(){
+        return getRadius() * 2;
+    }
+
     public Coordinate getCoordinate(){
         return coordinate;
     }

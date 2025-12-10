@@ -31,8 +31,8 @@ public class GraphicInterface extends JPanel {
             pointsOfMass.forEach(point ->
                     g.fillOval((int) point.getCoordinate().getX(),
                             (int) point.getCoordinate().getY(),
-                            (int) point.getRadius()*2,
-                            (int) point.getRadius()*2));
+                            (int) point.getDiameter(),
+                            (int) point.getDiameter()));
         }
     }
 }

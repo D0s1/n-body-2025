@@ -33,7 +33,7 @@ public class Coordinate {
     }
 
     public void addToY(double y){
-        this.y +=y;
+        this.y += y;
     }
 
 }
